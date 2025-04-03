@@ -193,7 +193,7 @@ translator = Translator()
 
 # İkon
 try:
-    image_icon = PhotoImage(file="Images/icon.png")
+    image_icon = PhotoImage(file="Çeviri Uygulaması/Images/icon.png")
     root.iconphoto(False, image_icon)
 except:
     print("İkon dosyası bulunamadı")
@@ -209,7 +209,7 @@ Top_frame = ttk.Frame(root, style="TFrame", height=80)
 Top_frame.pack(fill=X, padx=10, pady=10)
 
 try:
-    logo_icon = PhotoImage(file="Images/icon.png").subsample(2, 2)
+    logo_icon = PhotoImage(file="Çeviri Uygulaması/Images/icon.png").subsample(2, 2)
     ttk.Label(Top_frame, image=logo_icon, background=framebg).pack(side=LEFT, padx=10, pady=5)
 except:
     ttk.Label(Top_frame, text="LOGO", background=framebg, foreground="white", 
@@ -320,10 +320,10 @@ def create_image_button(parent, image_path, command, text):
         return btn
 
 # Butonları oluştur
-translate_btn = create_image_button(button_frame, "Images/trans.png", translate_text, "Çevir")
+translate_btn = create_image_button(button_frame, "Çeviri Uygulaması/Images/trans.png", translate_text, "Çevir")
 translate_btn.pack(fill=X, pady=5)
 
-voice_btn = create_image_button(button_frame, "Images/speak.png", speak_text, "Seslendir")
+voice_btn = create_image_button(button_frame, "Çeviri Uygulaması/Images/speak.png", speak_text, "Seslendir")
 voice_btn.pack(fill=X, pady=5)
 
 stop_btn = Button(
@@ -344,16 +344,16 @@ stop_btn = Button(
 )
 stop_btn.pack(fill=X, pady=2, ipadx=2)  # Daha az boşluk
 
-record_btn = create_image_button(button_frame, "Images/mic.png", record_audio, "Ses Kaydet")
+record_btn = create_image_button(button_frame, "Çeviri Uygulaması/Images/mic.png", record_audio, "Ses Kaydet")
 record_btn.pack(fill=X, pady=5)
 
-file_btn = create_image_button(button_frame, "Images/pdfimage.png", upload_pdf, "PDF Yükle")
+file_btn = create_image_button(button_frame, "Çeviri Uygulaması/Images/pdfimage.png", upload_pdf, "PDF Yükle")
 file_btn.pack(fill=X, pady=5)
 
-audio_btn = create_image_button(button_frame, "Images/music.png", upload_audio_file, "Ses Dosyası")
+audio_btn = create_image_button(button_frame, "Çeviri Uygulaması/Images/music.png", upload_audio_file, "Ses Dosyası")
 audio_btn.pack(fill=X, pady=5)
 
-save_btn = create_image_button(button_frame, "Images/download.png", save_translation, "Kaydet")
+save_btn = create_image_button(button_frame, "Çeviri Uygulaması/Images/download.png", save_translation, "Kaydet")
 save_btn.pack(fill=X, pady=5)
 
 # Pencere boyutlandırma ayarları
