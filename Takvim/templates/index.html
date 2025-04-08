@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}{{ month_name }} {{ year }}{% endblock %}
+
+{% block content %}
+<div class="calendar-controls">
+    <a href="{{ url_for('index', year=year-1, month=month) }}">« Yıl</a>
+    <a href="{{ url_for('index', year=year if month > 1 else year-1, month=month-1 if month > 1 else 12) }}">« Ay</a>
+    
+    <h2>{{ month_name }} {{ year }}</h2>
+    
+    <a href="{{ url_for('index', year=year if month < 12 else year+1, month=month+1 if month < 12 else 1) }}">Ay »</a>
+    <a href="{{ url_for('index', year=year+1, month=month) }}">Yıl »</a>
+</div>
+
+<table class="calendar">
+    <thead>
+        <tr>
+            <th>Pzt</th>
+            <th>Sal</th>
+            <th>Çar</th>
+            <th>Per</th>
+            <th>Cum</th>
+            <th>Cmt</th>
+            <th>Paz</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for week in calendar_data %}
+        <tr>
+            {% for day in week %}
+            <td {% if day.date %}class="{% if day.has_event %}has-event{% endif %}"{% endif %}>
+                {% if day.date %}
+                    <a href="{{ url_for('event_detail', date=day.date) }}">{{ day.day }}</a>
+                {% else %}
+                    {{ day.day }}
+                {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="add-event">
+    <h3>Etkinlik Ekle</h3>
+    <form action="{{ url_for('add_event') }}" method="post">
+        <input type="date" name="date" required>
+        <input type="text" name="title" placeholder="Etkinlik Başlığı" required>
+        <textarea name="description" placeholder="Açıklama"></textarea>
+        <button type="submit">Ekle</button>
+    </form>
+</div>
+{% endblock %}

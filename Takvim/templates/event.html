@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{{ date }} Etkinlikleri{% endblock %}
+
+{% block content %}
+<h2>{{ date }} Tarihli Etkinlikler</h2>
+
+{% if events %}
+<ul class="event-list">
+    {% for event in events %}
+    <li>
+        <h3>{{ event.title }}</h3>
+        <p>{{ event.description }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Bu tarihte hiç etkinlik bulunmamaktadır.</p>
+{% endif %}
+
+<a href="{{ url_for('index') }}">Takvime Dön</a>
+{% endblock %}
